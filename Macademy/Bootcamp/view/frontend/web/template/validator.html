@@ -1,0 +1,8 @@
+<div class="flavio-validator">
+    <form data-bind="submit: handleSubmit">
+        <input id="textInput" type="text" data-bind="textInput: textToValidate, attr: { placeholder: placeholder }"/>
+        <button class="action primary" type="submit"><!-- ko i18n: 'Click me' --><!-- /ko --></button>
+        <div class="message-response" data-bind="html: messageResponse, style: { color: isSuccess() ? 'blue' : 'red' }"></div>
+    </form>
+</div>
+

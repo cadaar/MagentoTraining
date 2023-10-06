@@ -1,0 +1,17 @@
+<?php
+    /* @var $block Magento\Framework\View\Element\Template */
+?>
+
+<div id="counter" data-bind="scope: 'counter'">
+    <div id="counter-template">
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "#counter": {
+            "Magento_Ui/js/core/app": <?= $block->getJsLayout() ?>
+         }
+    }
+</script>

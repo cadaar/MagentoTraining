@@ -1,0 +1,15 @@
+<?php
+/* @var $block Magento\Framework\View\Element\Template */
+?>
+
+<div id="validator" data-bind="scope: 'validator'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<script type="text/x-magento-init">
+    {
+      "#validator":{
+          "Magento_Ui/js/core/app" :  <?= $block -> getJsLayout() ?>
+      }
+    }
+</script>
