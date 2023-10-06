@@ -25,6 +25,8 @@ define([
         defaults: {
             template: 'Flavio_CustomCheckout/doctor-info',
             isVisible: ko.observable(false),
+            doctorName: ko.observable('Doctor Who'),
+            doctorPhone: ko.observable('999 999 9999'),
         },
         quoteIsVirtual: quote.isVirtual(),
         initialize: function() {

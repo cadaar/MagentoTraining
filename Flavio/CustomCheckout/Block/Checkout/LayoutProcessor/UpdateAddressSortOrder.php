@@ -14,6 +14,10 @@ class UpdateAddressSortOrder implements LayoutProcessorInterface
             ['payment']['children']
             ['payments-list']['children'] as &$paymentMethod) {
 
+            if (!isset($paymentMethod['children']['form-fields']['children'])) {
+                continue;
+            }
+
             $fields = &$paymentMethod['children']['form-fields']['children'];
             if ($fields === null) {
                 continue;

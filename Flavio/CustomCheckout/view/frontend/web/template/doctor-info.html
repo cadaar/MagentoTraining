@@ -6,6 +6,37 @@
          aria-hidden="false">
 <!--        <each if="!quoteIsVirtual" args="getRegion('customer-email')" render=""></each>-->
         <form data-bind="submit: navigateToNextStep" novalidate="novalidate">
+            <fieldset class="fieldset">
+                <legend class="legend">
+                    <span data-bind="i18n: 'Doctor\'s Information'"></span>
+                </legend>
+                <div class="field required">
+                    <label class="label" for="doctor-name"><span data-bind="i18n: 'Name'"></span></label>
+                    <div class="control _with-tooltip">
+                        <input class="input-text"
+                               type="text"
+                               data-bind="
+                               attr: {
+                               placeholder: $t('Doctor\'s Name')}"
+                               name="doctor-name"
+                               data-validate="{required:true}"
+                               id="doctor-name" />
+                    </div>
+                </div>
+                <div class="field required">
+                    <label class="label" for="doctor-phone"><span data-bind="i18n: 'Phone number'"></span></label>
+                    <div class="control _with-tooltip">
+                        <input class="input-text"
+                               type="text"
+                               data-bind="
+                               attr: {
+                               placeholder: $t('(999) 999 9999)')}"
+                               name="doctor-name"
+                               data-validate="{required:true}"
+                               id="doctor-phone" />
+                    </div>
+                </div>
+            </fieldset>
             <div class="primary">
                 <button data-role="opc-continue" type="submit" class="button action continue primary">
                     <span translate="'Next'"></span>
