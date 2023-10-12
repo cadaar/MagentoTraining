@@ -8,6 +8,18 @@
                         <item name="components" xsi:type="array">
                             <item name="checkout" xsi:type="array">
                                 <item name="children" xsi:type="array">
+                                    <item name="authentication" xsi:type="array">
+                                        <item name="component" xsi:type="string">Flavio_CustomCheckout/js/view/authentication</item>
+                                        <item name="displayArea" xsi:type="string">authentication</item>
+                                        <item name="children" xsi:type="array">
+                                            <!--Additional authentication fields-->
+                                            <item name="errors" xsi:type="array">
+                                                <item name="sortOrder" xsi:type="string">0</item>
+                                                <item name="component" xsi:type="string">Magento_Checkout/js/view/authentication-messages</item>
+                                                <item name="displayArea" xsi:type="string">messages</item>
+                                            </item>
+                                        </item>
+                                    </item>
                                     <item name="steps" xsi:type="array">
                                         <item name="children" xsi:type="array">
                                             <item name="shipping-step" xsi:type="array">
@@ -79,13 +91,83 @@
                                             </item>
                                             <item name="doctor-info-step"  xsi:type="array">
                                                 <item name="component" xsi:type="string">uiComponent</item>
-
                                                 <item name="children" xsi:type="array">
-                                                    <item name="doctor-info" xsi:type="array">
+                                                    <item name="doctor-info-fieldset" xsi:type="array">
                                                         <item name="component" xsi:type="string">Flavio_CustomCheckout/js/view/doctor-info</item>
                                                         <item name="config" xsi:type="array">
                                                             <item name="sortOrder" xsi:type="string">2</item>
                                                         </item>
+                                                        <item name="children" xsi:type="array">
+
+                                                            <item name="doctorName" xsi:type="array">
+                                                                <item name="validation" xsi:type="array">
+                                                                    <item name="required-entry" xsi:type="boolean">true</item>
+                                                                </item>
+                                                            </item>
+
+                                                            <item name="telephone" xsi:type="array">
+                                                                <item name="config" xsi:type="array">
+                                                                    <item name="tooltip" xsi:type="array">
+                                                                        <item name="description" xsi:type="string" translate="true">Main contact telephone.</item>
+                                                                    </item>
+                                                                </item>
+                                                                <item name="validation" xsi:type="array">
+                                                                    <item name="validate-phoneStrict" xsi:type="boolean">true</item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                            <!-- disable discount to avoid DOM errors BEGIN -->
+                                            <item name="billing-step" xsi:type="array">
+                                                <item name="children" xsi:type="array">
+                                                    <item name="payment" xsi:type="array">
+                                                        <item name="children" xsi:type="array">
+                                                            <item name="afterMethods" xsi:type="array">
+                                                                <item name="children" xsi:type="array">
+                                                                    <item name="discount" xsi:type="array">
+                                                                        <item name="config" xsi:type="array">
+                                                                            <item name="componentDisabled" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                            <!-- disable discount to avoid DOM errors END -->
+                                        </item>
+                                    </item>
+                                    <item name="sidebar" xsi:type="array">
+                                        <item name="config" xsi:type="array">
+                                            <item name="template" xsi:type="string">Flavio_CustomCheckout/sidebar</item>
+                                        </item>
+                                        <item name="children" xsi:type="array">
+                                            <item name="discount" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_SalesRule/js/view/payment/discount</item>
+                                                <item name="config" xsi:type="array">
+                                                    <item name="displayArea" xsi:type="string">after-summary</item>
+                                                </item>
+                                                <item name="children" xsi:type="array">
+                                                    <item name="errors" xsi:type="array">
+                                                        <item name="sortOrder" xsi:type="string">0</item>
+                                                        <item name="component" xsi:type="string">Magento_SalesRule/js/view/payment/discount-messages</item>
+                                                        <item name="displayArea" xsi:type="string">messages</item>
+                                                    </item>
+                                                    <item name="captcha" xsi:type="array">
+                                                        <item name="component" xsi:type="string">Magento_SalesRule/js/view/payment/captcha</item>
+                                                        <item name="displayArea" xsi:type="string">captcha</item>
+                                                        <item name="formId" xsi:type="string">sales_rule_coupon_request</item>
+                                                        <item name="configSource" xsi:type="string">checkoutConfig</item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                            <item name="summary" xsi:type="array">
+                                                <item name="children" xsi:type="array">
+                                                    <item name="cart_items" xsi:type="array">
+                                                        <item name="component" xsi:type="string">Flavio_CustomCheckout/js/view/summary/cart-items</item>
                                                     </item>
                                                 </item>
                                             </item>

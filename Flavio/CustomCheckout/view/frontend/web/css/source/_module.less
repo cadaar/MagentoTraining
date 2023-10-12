@@ -1,0 +1,48 @@
+& when (@media-common = true) {
+    .payment-option-title {
+        color: #006bb4;
+        display: inline-block;
+        text-decoration: none;
+        cursor: pointer;
+
+        .action-toggle {
+            color: #006bb4;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .action-toggle:after {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 14px;
+            line-height: 16px;
+            color: #757575;
+            content: '\e622';
+            font-family: 'luma-icons';
+            margin: 0 0 0 10px;
+            vertical-align: middle;
+            display: inline-block;
+            font-weight: normal;
+            overflow: hidden;
+            speak: none;
+            text-align: center;
+        }
+
+        ._active {
+            content: '\e621';
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 14px;
+            line-height: 16px;
+            color: #757575;
+            font-family: 'luma-icons';
+            margin: 0 0 0 10px;
+            vertical-align: middle;
+            display: inline-block;
+            font-weight: normal;
+            overflow: hidden;
+            speak: none;
+            text-align: center;
+        }
+    }
+}

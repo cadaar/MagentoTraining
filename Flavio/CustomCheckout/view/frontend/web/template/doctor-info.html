@@ -16,9 +16,10 @@
                         <input class="input-text"
                                type="text"
                                data-bind="
-                               attr: {
-                               placeholder: $t('Doctor\'s Name')}"
-                               name="doctor-name"
+                                   textInput: doctorName,
+                                   attr: {
+                                   placeholder: $t('Doctor\'s Name')}"
+                               name="doctorName"
                                data-validate="{required:true}"
                                id="doctor-name" />
                     </div>
@@ -29,9 +30,10 @@
                         <input class="input-text"
                                type="text"
                                data-bind="
-                               attr: {
-                               placeholder: $t('(999) 999 9999)')}"
-                               name="doctor-name"
+                                   textInput: doctorPhone,
+                                   attr: {
+                                   placeholder: $t('(999) 999 9999)')}"
+                               name="telephone"
                                data-validate="{required:true}"
                                id="doctor-phone" />
                     </div>

@@ -7,7 +7,7 @@ define([
     'Magento_Checkout/js/model/quote',
     'Magento_Customer/js/model/customer',
     'jquery',
-    'Magento_Checkout/js/model/customer-email-validator'
+    'Magento_Ui/js/lib/validation/utils',
 ], function(
     Component,
     ko,
@@ -17,7 +17,7 @@ define([
     quote,
     customer,
     $,
-    customerEmailValidator
+    utils
 ) {
     'use strict';
 
@@ -48,10 +48,9 @@ define([
             this.isVisible(true);
         },
         navigateToNextStep: function () {
-            stepNavigator.next();
-            // if (customerEmailValidator.validate()) {
-            //     stepNavigator.next();
-            // }
+            if (!utils.isEmpty(this.doctorName()) && !utils.isEmpty(this.doctorPhone())) {
+                stepNavigator.next();
+            }
         }
     });
 });
