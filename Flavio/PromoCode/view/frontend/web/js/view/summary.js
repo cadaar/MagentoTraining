@@ -5,13 +5,13 @@
 
 define([
     'Magento_Checkout/js/view/summary',
-    'Magento_Checkout/js/model/totals',
+    //'Magento_Checkout/js/model/totals',
     'Magento_Customer/js/customer-data',
     'ko',
     'underscore'
 ], function (
     Component,
-    totals,
+    //totals,
     customerData,
     ko,
     _,
@@ -26,7 +26,7 @@ define([
             tracks: {
                 subtotal: true
             },
-            promoMessage: ko.observable(''),
+            //promoMessage: ko.observable(''),
         },
         initialize: function () {
             let self = this;
@@ -45,7 +45,7 @@ define([
                 }
             });
 
-            self.message = ko.computed(function () {
+            self.promoMessage = ko.computed(function () {
                 if (_.isUndefined(self.subtotal) || self.subtotal === 0) {
                     self.subtotal = 0;
                 }
@@ -67,7 +67,7 @@ define([
             console.log(this.name + ' is loaded.');
         },
         formatCurrency: function (value) {
-            return '$' + value.toFixed(2);
+            return value.toFixed(2);
         }
     });
 });
