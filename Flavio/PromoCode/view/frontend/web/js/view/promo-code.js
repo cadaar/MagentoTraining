@@ -1,17 +1,12 @@
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-
 define([
-    'Magento_Checkout/js/view/summary',
+    'uiComponent', // 'Magento_Checkout/js/view/summary',
     //'Magento_Checkout/js/model/totals',
     'Magento_Customer/js/customer-data',
     'ko',
     'underscore'
 ], function (
     Component,
-    //totals,
+    // totals,
     customerData,
     ko,
     _,
@@ -26,7 +21,6 @@ define([
             tracks: {
                 subtotal: true
             },
-            //promoMessage: ko.observable(''),
         },
         initialize: function () {
             let self = this;

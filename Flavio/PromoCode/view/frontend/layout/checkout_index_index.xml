@@ -13,11 +13,11 @@
                                             <item name="summary" xsi:type="array">
                                                 <item name="children" xsi:type="array">
                                                     <item name="FlavioPromoCode" xsi:type="array">
-                                                        <item name="component" xsi:type="string">Flavio_PromoCode/js/view/summary</item>
+                                                        <item name="component" xsi:type="string">Flavio_PromoCode/js/view/promo-code</item>
                                                         <item name="displayArea" xsi:type="string">summary</item>
                                                         <item name="config" xsi:type="array">
                                                             <item name="sortOrder" xsi:type="string">2</item>
-                                                            <item name="template" xsi:type="string">Flavio_PromoCode/summary</item>
+                                                            <item name="template" xsi:type="string">Flavio_PromoCode/promo-code</item>
                                                             <item name="messageDefault" xsi:type="string">Add ${{XX}} of items to your cart to receive a promo code for 10% off your entire order. 😎</item>
                                                             <item name="messageFreeCoupon" xsi:type="string">🎉🎉Congrats!🎉🎉 Use promo code {{GET100}} for {{10%}} off your entire order.</item>
                                                         </item>
