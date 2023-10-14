@@ -21,10 +21,6 @@ define([
         },
 
         initialize: function () {
-            this.template = (customer.isLoggedIn())? 'Flavio_CustomCheckout/assistance-message': 'Magento_Checkout/authentication';
-
-            console.log('this.template: ' + this.template);
-
             this._super();
 
             this.setAssistanceMessage();

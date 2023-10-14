@@ -7,7 +7,6 @@ define([
     'Magento_Checkout/js/model/quote',
     'Magento_Customer/js/model/customer',
     'jquery',
-    'Magento_Checkout/js/model/customer-email-validator'
 ], function(
     Component,
     ko,
@@ -17,7 +16,6 @@ define([
     quote,
     customer,
     $,
-    customerEmailValidator
 ) {
     'use strict';
 
@@ -40,8 +38,6 @@ define([
                 this.sortOrder
             );
 
-            console.log('window.checkoutConfig.quoteData.customer_email: ' + window.checkoutConfig.quoteData.customer_email);
-
             console.log(this.name + ' is loaded.')
             return this;
         },
@@ -55,9 +51,18 @@ define([
                 console.log('Need to update the customer email address.');
             }
 
-            if (customerEmailValidator.validate()) {
+            if (this.validateEmail()) {
                 stepNavigator.next();
             }
+        },
+        validateEmail: function () {
+            let emailValidationResult = false,
+                loginFormSelector = 'form[data-role=email-with-possible-login]';
+
+            $(loginFormSelector).validation();
+            emailValidationResult = Boolean($(loginFormSelector + ' input[name=username]').valid());
+
+            return emailValidationResult;
         }
     });
 });

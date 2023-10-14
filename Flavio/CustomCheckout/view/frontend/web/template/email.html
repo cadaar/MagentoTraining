@@ -4,8 +4,7 @@
          data-role="content"
          role="tabpanel"
          aria-hidden="false">
-<!--        <each if="!quoteIsVirtual" args="getRegion('customer-email')" render=""></each>-->
-        <form data-bind="submit: navigateToNextStep" novalidate="novalidate">
+        <form data-bind="submit: navigateToNextStep" novalidate="novalidate" data-role="email-with-possible-login">
             <fieldset class="fieldset">
                 <div class="field required">
                     <label class="label" for="email-step-customer-email"><span data-bind="i18n: 'Email'"></span></label>
@@ -16,7 +15,7 @@
                                        textInput: emailAddress,
                                        attr: {
                                        placeholder: $t('customer@magentotest.com')}"
-                               name="email-step-customer-email"
+                               name="username"
                                data-validate="{required:true, 'validate-email':true}"
                                id="email-step-customer-email" />
                     </div>
