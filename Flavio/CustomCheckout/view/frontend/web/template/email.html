@@ -4,8 +4,24 @@
          data-role="content"
          role="tabpanel"
          aria-hidden="false">
-        <each if="!quoteIsVirtual" args="getRegion('customer-email')" render=""></each>
+<!--        <each if="!quoteIsVirtual" args="getRegion('customer-email')" render=""></each>-->
         <form data-bind="submit: navigateToNextStep" novalidate="novalidate">
+            <fieldset class="fieldset">
+                <div class="field required">
+                    <label class="label" for="email-step-customer-email"><span data-bind="i18n: 'Email'"></span></label>
+                    <div class="control _with-tooltip">
+                        <input class="input-text"
+                               type="text"
+                               data-bind="
+                                       textInput: emailAddress,
+                                       attr: {
+                                       placeholder: $t('customer@magentotest.com')}"
+                               name="email-step-customer-email"
+                               data-validate="{required:true, 'validate-email':true}"
+                               id="email-step-customer-email" />
+                    </div>
+                </div>
+            </fieldset>
             <div class="primary">
                 <button data-role="opc-continue" type="submit" class="button action continue primary">
                     <span translate="'Next'"></span>

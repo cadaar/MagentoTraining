@@ -25,6 +25,7 @@ define([
         defaults: {
             template: 'Flavio_CustomCheckout/email',
             isVisible: ko.observable(false),
+            emailAddress: window.checkoutConfig.quoteData.customer_email
         },
         quoteIsVirtual: quote.isVirtual(),
         initialize: function() {
@@ -39,12 +40,21 @@ define([
                 this.sortOrder
             );
 
+            console.log('window.checkoutConfig.quoteData.customer_email: ' + window.checkoutConfig.quoteData.customer_email);
+
+            console.log(this.name + ' is loaded.')
             return this;
         },
         navigate: function() {
             this.isVisible(true);
         },
         navigateToNextStep: function () {
+            const customerEmail = window.checkoutConfig.quoteData.customer_email;
+
+            if (customer.isLoggedIn() && (customerEmail !== this.emailAddress)) {
+                console.log('Need to update the customer email address.');
+            }
+
             if (customerEmailValidator.validate()) {
                 stepNavigator.next();
             }
