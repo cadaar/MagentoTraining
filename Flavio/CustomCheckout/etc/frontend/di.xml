@@ -4,6 +4,14 @@
         <arguments>
             <argument name="layoutProcessors" xsi:type="array">
                 <item name="flavio_customcheckout_checkout_layout_processor_updateaddresssortorder" xsi:type="object">Flavio\CustomCheckout\Block\Checkout\LayoutProcessor\UpdateAddressSortOrder</item>
+                <item name="flavio_customcheckout_checkout_layout_processor_addressclassificationattribute" xsi:type="object">Flavio\CustomCheckout\Block\Checkout\LayoutProcessor\AddressClassificationAttribute</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="flavio_customcheckout_checkoutconfigprovider" xsi:type="object">Flavio\CustomCheckout\Model\CheckoutConfigProvider</item>
             </argument>
         </arguments>
     </type>
