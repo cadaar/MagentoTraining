@@ -6,8 +6,7 @@ define([
     'underscore',
     'Magento_Checkout/js/model/quote',
     'Magento_Customer/js/model/customer',
-    'jquery',
-    'Magento_Ui/js/lib/validation/utils',
+    'jquery'
 ], function(
     Component,
     ko,
@@ -16,8 +15,7 @@ define([
     _,
     quote,
     customer,
-    $,
-    utils
+    $
 ) {
     'use strict';
 
@@ -48,7 +46,11 @@ define([
             this.isVisible(true);
         },
         navigateToNextStep: function () {
-            if (!utils.isEmpty(this.doctorName()) && !utils.isEmpty(this.doctorPhone())) {
+            var formSelector = 'form[data-role=doctor-info-data-role]'
+            $(formSelector).validation();
+            var doctorNameValidation = Boolean($(formSelector + ' input[name=doctorName]').valid());
+            var doctorPhoneValidation = Boolean($(formSelector + ' input[name=doctorPhone]').valid());
+            if (doctorNameValidation && doctorPhoneValidation) {
                 stepNavigator.next();
             }
         }

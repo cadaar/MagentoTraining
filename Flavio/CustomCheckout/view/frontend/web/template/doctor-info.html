@@ -4,7 +4,7 @@
          data-role="content"
          role="tabpanel"
          aria-hidden="false">
-        <form data-bind="submit: navigateToNextStep" novalidate="novalidate">
+        <form data-bind="submit: navigateToNextStep" novalidate="novalidate" data-role="doctor-info-data-role">
             <fieldset class="fieldset">
                 <legend class="legend">
                     <span data-bind="i18n: 'Doctor\'s Information'"></span>
@@ -32,7 +32,7 @@
                                    textInput: doctorPhone,
                                    attr: {
                                    placeholder: $t('(999) 999 9999)')}"
-                               name="telephone"
+                               name="doctorPhone"
                                data-validate="{required:true}"
                                id="doctor-phone" />
                     </div>
