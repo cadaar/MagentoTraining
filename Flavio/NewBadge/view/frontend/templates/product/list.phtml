@@ -59,13 +59,6 @@ $_helper = $block->getData('outputHelper');
                                 . 'top:' . $productImage->getHeight() . 'px;';
                         }
                         ?>
-
-                        <?php
-                        if (null !== $_product->getCustomAttribute('is_new')) {
-                            echo $_product->getCustomAttribute('is_new')->getValue();
-                        }
-                        ?>
-
                         <?php
                         $isNew = $_product->getData('is_new');
                         if (isset($isNew) && $isNew) { ?>
