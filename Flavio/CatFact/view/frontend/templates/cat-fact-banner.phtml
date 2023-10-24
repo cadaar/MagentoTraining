@@ -1,0 +1,17 @@
+<?php
+/* @var $block Magento\Framework\View\Element\Template */
+
+$jsLayout = json_decode($block->getJsLayout(), true);
+?>
+
+<div id="cat-fact-banner" data-bind="scope: 'cat-fact-banner'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "#cat-fact-banner": {
+            "Magento_Ui/js/core/app": <?= json_encode($jsLayout) ?>
+    }
+}
+</script>
