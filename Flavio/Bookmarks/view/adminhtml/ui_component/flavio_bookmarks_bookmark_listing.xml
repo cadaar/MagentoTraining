@@ -14,6 +14,9 @@
     <dataSource name="flavio_bookmarks_bookmark_listing_data_source" component="Magento_Ui/js/grid/provider">
         <settings>
             <updateUrl path="mui/index/render"/>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id</param>
+            </storageConfig>
         </settings>
         <aclResource>Flavio_Bookmarks::all_bookmarks</aclResource>
         <dataProvider name="flavio_bookmarks_bookmark_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
