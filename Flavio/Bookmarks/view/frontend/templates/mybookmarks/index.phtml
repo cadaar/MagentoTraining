@@ -4,7 +4,9 @@
 ?>
 
 <h2>
-    <?= $block->getTitle(); ?>
+    <?= $block->getDemoText(); ?>
 </h2>
 
-echo 'My First Link Page';
+<div class="message info empty">
+    <span><?= $escaper->escapeHtml(__('You have no bookmarks yet.')) ?></span>
+</div>

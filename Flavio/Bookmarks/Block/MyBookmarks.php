@@ -15,9 +15,9 @@ class MyBookmarks extends Template
         parent::__construct($context, $data);
     }
 
-    public function getTitle()
+    public function getDemoText()
     {
-        return 'My Bookmarks';
+        return 'Your grid goes here...';
     }
 
 }

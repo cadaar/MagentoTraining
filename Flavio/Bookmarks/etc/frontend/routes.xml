@@ -2,7 +2,7 @@
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="standard">
-        <route id="Bookmarks" frontName="Bookmarks">
+        <route id="bookmarks" frontName="bookmarks">
             <module name="Flavio_Bookmarks" />
         </route>
     </router>

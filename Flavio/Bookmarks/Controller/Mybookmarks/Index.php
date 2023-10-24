@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Flavio\Bookmarks\Controller\MyBookmarks;
+namespace Flavio\Bookmarks\Controller\Mybookmarks;
 
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\View\Result\Page;
