@@ -29,6 +29,8 @@
         </settings>
         <paging name="listing_paging"/>
         <columnsControls name="columns_controls"/>
+        <bookmark name="bookmarks" />
+        <filters name="listing_filters" />
     </listingToolbar>
     <columns name="flavio_bookmarks_bookmark_columns">
         <settings>
@@ -46,26 +48,31 @@
         <column name="id">
             <settings>
                 <label translate="true">ID</label>
+                <sorting>desc</sorting>
             </settings>
         </column>
         <column name="customer_id">
             <settings>
                 <label translate="true">Customer ID</label>
+                <filter>textRange</filter>
             </settings>
         </column>
         <column name="customer_name">
             <settings>
                 <label translate="true">Customer Name</label>
+                <filter>text</filter>
             </settings>
         </column>
         <column name="url">
             <settings>
                 <label translate="true">URL</label>
+                <filter>text</filter>
             </settings>
         </column>
         <column name="page_title">
             <settings>
                 <label translate="true">Page Title</label>
+                <filter>text</filter>
             </settings>
         </column>
         <actionsColumn name="actions" class="Flavio\Bookmarks\Ui\Component\Listing\Column\Actions" />
