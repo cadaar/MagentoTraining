@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">flavio_bookmarks_bookmark_form.flavio_bookmarks_bookmark_data_source</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="Flavio\Bookmarks\Block\Adminhtml\Bookmark\View\Button\Back" />
+        </buttons>
+        <namespace>flavio_bookmarks_bookmark_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>flavio_bookmarks_bookmark_form.flavio_bookmarks_bookmark_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="flavio_bookmarks_bookmark_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <dataProvider class="Flavio\Bookmarks\Ui\DataProvider\Bookmark" name="flavio_bookmarks_bookmark_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="flavio_bookmarks_bookmark_fieldset">
+        <settings>
+            <label/>
+        </settings>
+        <field name="id" formElement="hidden"/>
+        <field name="customer_id" formElement="input">
+            <settings>
+                <label translate="true">Customer ID</label>
+                <disabled>1</disabled>
+            </settings>
+        </field>
+        <field name="customer_name" formElement="input">
+            <settings>
+                <label translate="true">Customer Name</label>
+                <disabled>1</disabled>
+            </settings>
+        </field>
+        <field name="url" formElement="input">
+            <settings>
+                <label translate="true">URL</label>
+                <disabled>1</disabled>
+            </settings>
+        </field>
+        <field name="page_title" formElement="input">
+            <settings>
+                <label translate="true">Page Title</label>
+                <disabled>1</disabled>
+            </settings>
+        </field>
+    </fieldset>
+</form>

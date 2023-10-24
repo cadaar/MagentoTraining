@@ -1,0 +1,14 @@
+{
+    "flavio_bookmarks_bookmark": {
+        "column": {
+            "id": true,
+            "customer_id": true,
+            "customer_name": true,
+            "url": true,
+            "page_title": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

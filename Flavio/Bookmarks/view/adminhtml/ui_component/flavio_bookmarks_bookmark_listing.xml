@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">flavio_bookmarks_bookmark_listing.flavio_bookmarks_bookmark_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <deps>
+            <dep>flavio_bookmarks_bookmark_listing.flavio_bookmarks_bookmark_listing_data_source</dep>
+        </deps>
+        <spinner>flavio_bookmarks_bookmark_columns</spinner>
+    </settings>
+    <dataSource name="flavio_bookmarks_bookmark_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Flavio_Bookmarks::all_bookmarks</aclResource>
+        <dataProvider name="flavio_bookmarks_bookmark_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <paging name="listing_paging"/>
+        <columnsControls name="columns_controls"/>
+    </listingToolbar>
+    <columns name="flavio_bookmarks_bookmark_columns">
+        <settings>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">flavio_bookmarks_bookmark_listing.flavio_bookmarks_bookmark_listing.flavio_bookmarks_bookmark_columns.actions</item>
+                    <item name="target" xsi:type="string">applyAction</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">view</item>
+                        <item name="1" xsi:type="string">${ $.$data.rowIndex }</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+        <column name="id">
+            <settings>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="customer_id">
+            <settings>
+                <label translate="true">Customer ID</label>
+            </settings>
+        </column>
+        <column name="customer_name">
+            <settings>
+                <label translate="true">Customer Name</label>
+            </settings>
+        </column>
+        <column name="url">
+            <settings>
+                <label translate="true">URL</label>
+            </settings>
+        </column>
+        <column name="page_title">
+            <settings>
+                <label translate="true">Page Title</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Flavio\Bookmarks\Ui\Component\Listing\Column\Actions" />
+    </columns>
+</listing>

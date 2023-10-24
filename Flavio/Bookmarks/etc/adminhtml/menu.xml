@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+            id="Flavio_Bookmarks::bookmarks"
+            title="Bookmarks"
+            translate="title"
+            module="Flavio_Bookmarks"
+            resource="Flavio_Bookmarks::bookmarks"
+            parent="Magento_Customer::customer"
+            sortOrder="900"
+        />
+        <add
+            id="Flavio_Bookmarks::all_bookmarks"
+            title="All Bookmarks"
+            translate="title"
+            module="Flavio_Bookmarks"
+            resource="Flavio_Bookmarks::all_bookmarks"
+            parent="Flavio_Bookmarks::bookmarks"
+            action="bookmarks/AllBookmarks"
+            sortOrder="900"
+        />
+    </menu>
+</config>
