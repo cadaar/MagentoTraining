@@ -3,9 +3,10 @@
 /** @var Magento\Framework\Escaper $escaper */
 ?>
 
-<h2>
-    <?= $block->getDemoText(); ?>
-</h2>
+<?= $this->getLayout()
+    ->createBlock('Magento\Cms\Block\Block')
+    ->setBlockId('MyBookmarksWelcomeMessage')
+    ->toHtml(); ?>
 
 <div class="message info empty">
     <span><?= $escaper->escapeHtml(__('You have no bookmarks yet.')) ?></span>
