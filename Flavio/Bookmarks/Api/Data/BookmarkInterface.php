@@ -21,6 +21,12 @@ interface BookmarkInterface
     public function getId();
 
     /**
+     * @param int $id
+     * @return $this
+     */
+    public function setId($id);
+
+    /**
      * @return string
      */
     public function getPageTitle();
@@ -63,11 +69,5 @@ interface BookmarkInterface
      * @return $this
      */
     public function setCustomerId($customerId);
-
-    /**
-     * @param int $customerId
-     * @return []
-     */
-    public function getBookmarksByCustomerId($customerId);
 
 }

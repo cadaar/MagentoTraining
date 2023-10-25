@@ -51,9 +51,4 @@ class Bookmark extends AbstractModel implements BookmarkInterface
     {
         return $this->setData(self::CUSTOMER_ID, $customerId);
     }
-
-    public function getBookmarksByCustomerId($customerId)
-    {
-        return [];
-    }
 }
