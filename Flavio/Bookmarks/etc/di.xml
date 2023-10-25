@@ -13,4 +13,6 @@
             </argument>
         </arguments>
     </type>
+    <preference for="Flavio\Bookmarks\Api\Data\BookmarkInterface" type="Flavio\Bookmarks\Model\Bookmark"/>
+    <preference for="Flavio\Bookmarks\Api\BookmarksRepositoryInterface" type="Flavio\Bookmarks\Model\BookmarkRepository"/>
 </config>

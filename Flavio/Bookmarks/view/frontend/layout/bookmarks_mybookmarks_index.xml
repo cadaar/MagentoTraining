@@ -7,7 +7,11 @@
         <referenceContainer name="content">
             <block class="Flavio\Bookmarks\Block\MyBookmarks"
                    name="bookmarks.mybookmarks.index"
-                   template="Flavio_Bookmarks::mybookmarks/index.phtml" />
+                   template="Flavio_Bookmarks::mybookmarks/index.phtml">
+                <arguments>
+                    <argument name="bookmark_vm" xsi:type="object">Flavio\Bookmarks\ViewModel\Bookmark</argument>
+                </arguments>
+            </block>
         </referenceContainer>
     </body>
 </page>

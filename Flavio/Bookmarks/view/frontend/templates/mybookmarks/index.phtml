@@ -1,12 +1,29 @@
 <?php
 /** @var Magento\Framework\View\Element\Template $block */
 /** @var Magento\Framework\Escaper $escaper */
+/** @var Flavio\Bookmarks\ViewModel\Bookmark $vm */
+$vm = $block->getData('bookmark_vm');
+$bookmarkDetail = $vm->getBookmark();
 ?>
 
 <?= $this->getLayout()
     ->createBlock('Magento\Cms\Block\Block')
     ->setBlockId('MyBookmarksWelcomeMessage')
     ->toHtml(); ?>
+
+<ul>
+<?php foreach ($vm->getList() as $bookmark): ?>
+    <li>
+        <a href="<?= $bookmark->getData('url') ?>">
+            <?= $bookmark->getData('page_title') ?>
+        </a>
+    </li>
+<?php endforeach ?>
+</ul>
+
+<?= $bookmarkDetail->getCustomerName(); ?>
+<?= $bookmarkDetail->getPageTitle(); ?>
+<?= $bookmarkDetail->getUrl(); ?>
 
 <div class="message info empty">
     <span><?= $escaper->escapeHtml(__('You have no bookmarks yet.')) ?></span>
