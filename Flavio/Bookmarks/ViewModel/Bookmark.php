@@ -2,20 +2,20 @@
 
 namespace Flavio\Bookmarks\ViewModel;
 
-use Flavio\Bookmarks\Model\ResourceModel\Bookmark\Collection;
+use Flavio\Bookmarks\Api\BookmarksRepositoryInterface;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Customer\Helper\Session\CurrentCustomer;
 
 class Bookmark implements ArgumentInterface
 {
     public function __construct(
-        private readonly Collection $collection,
         private readonly CurrentCustomer $currentCustomer,
+        private readonly BookmarksRepositoryInterface $repository,
     ) {}
     public function getList(): array
     {
-        $id = $this->currentCustomer->getCustomerId();
-        return $this->collection->setCustomerIdFilter($id)->getItems();
+        $id = (int)$this->currentCustomer->getCustomerId();
+        return $this->repository->getCollectionByCustomerId($id);
     }
 
 }

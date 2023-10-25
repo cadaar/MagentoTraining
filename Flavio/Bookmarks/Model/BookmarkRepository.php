@@ -5,6 +5,7 @@ namespace Flavio\Bookmarks\Model;
 use Flavio\Bookmarks\Api\Data\BookmarkInterface;
 use Flavio\Bookmarks\Model\ResourceModel\Bookmark as BookmarkResourceModel;
 use Flavio\Bookmarks\Api\BookmarksRepositoryInterface;
+use Flavio\Bookmarks\Model\ResourceModel\Bookmark\Collection;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -14,6 +15,7 @@ class BookmarkRepository implements BookmarksRepositoryInterface
     public function __construct(
         private BookmarkFactory $factory,
         private BookmarkResourceModel $resourceModel,
+        private readonly Collection $collection,
     ) {}
 
     public function getById(int $id): BookmarkInterface
@@ -54,6 +56,6 @@ class BookmarkRepository implements BookmarksRepositoryInterface
 
     public function getCollectionByCustomerId(int $customerId): array
     {
-        return [];
+        return $this->collection->setCustomerIdFilter($customerId)->getItems();
     }
 }
