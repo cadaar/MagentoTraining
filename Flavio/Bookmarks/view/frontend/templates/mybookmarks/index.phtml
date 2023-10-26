@@ -3,12 +3,10 @@
 /** @var Magento\Framework\Escaper $escaper */
 /** @var Flavio\Bookmarks\ViewModel\Bookmark $vm */
 $vm = $block->getData('bookmark_vm');
+$configValue = $block->getConfigValue('bookmarks_for_customers/general/enable');
 ?>
 
-<?php //= $this->getLayout()
-//    ->createBlock('Magento\Cms\Block\Block')
-//    ->setBlockId('MyBookmarksWelcomeMessage')
-//    ->toHtml(); ?>
+<span>bookmarks_for_customers/general/enable <?= $configValue ?></span>
 
 <table>
     <tbody>
