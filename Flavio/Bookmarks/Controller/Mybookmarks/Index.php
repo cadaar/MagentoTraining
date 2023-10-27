@@ -8,8 +8,6 @@ use Magento\Framework\View\Result\PageFactory;
 
 class Index implements HttpGetActionInterface
 {
-    const CMS_BLOCK_IDENTIFIER = 'MyBookmarksWelcomeMessage';
-
     public function __construct(
         private readonly PageFactory $pageFactory,
     ){}
