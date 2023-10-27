@@ -19,7 +19,7 @@ class MyBookmarks extends Template
 
     public function getConfigValue($value = '')
     {
-        return $this->scopeConfig->getValue($value, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->getValue($value);
     }
 
 }

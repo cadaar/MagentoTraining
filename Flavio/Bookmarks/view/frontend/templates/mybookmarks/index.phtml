@@ -5,14 +5,10 @@
 $vm = $block->getData('bookmark_vm');
 $configValue = $block->getConfigValue('bookmarks_for_customers/general/enable');
 $bookmarkList = $vm->getList();
+$isConfigParameterOn = $vm->isCustomerBookmarksOn();
 ?>
 
-<?= $this->getLayout()
-    ->createBlock('Magento\Cms\Block\Block')
-    ->setBlockId('MyBookmarksWelcomeMessage')
-    ->toHtml(); ?>
-
-<span>bookmarks_for_customers/general/enable <?= $configValue ?></span>
+<!--<span>bookmarks_for_customers/general/enable --><?php //= $vm->isCustomerBookmarksOn(); ?><!--</span>-->
 
 <?php if (empty($bookmarkList)): ?>
     <div class="message info empty">
