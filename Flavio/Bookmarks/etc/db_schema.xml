@@ -3,11 +3,18 @@
     <table name="flavio_bookmarks_bookmark" engine="innodb" comment="Bookmarks">
         <column name="id" xsi:type="int" padding="10" unsigned="true" nullable="false" identity="true" comment="Id" />
         <column name="customer_id" xsi:type="int" padding="10" unsigned="true" nullable="false" comment="Customer Id" />
-        <column name="customer_name" xsi:type="text" nullable="false" comment="Customer Name" />
+<!--        <column name="customer_name" xsi:type="text" nullable="false" comment="Customer Name" />-->
         <column name="url" xsi:type="text" nullable="false" comment="Page URL" />
         <column name="page_title" xsi:type="text" nullable="false" comment="Page Title" />
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="id" />
         </constraint>
+        <constraint xsi:type="foreign"
+                    referenceId="customer_entity_bookmarks_id"
+                    table="flavio_bookmarks_bookmark"
+                    column="customer_id"
+                    referenceTable="customer_entity"
+                    referenceColumn="entity_id"
+                    onDelete="CASCADE"/>
     </table>
 </schema>

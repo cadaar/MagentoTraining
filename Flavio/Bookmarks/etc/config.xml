@@ -4,7 +4,7 @@
     <default>
         <bookmarks_for_customers>
             <general>
-                <enable>0</enable>
+                <enable>1</enable>
             </general>
         </bookmarks_for_customers>
     </default>
