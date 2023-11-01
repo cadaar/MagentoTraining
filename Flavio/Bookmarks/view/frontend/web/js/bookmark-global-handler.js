@@ -14,7 +14,9 @@ define([
     'use strict';
 
     return Component.extend({
-
+        defaults: {
+            template: 'Flavio_Bookmarks/bookmark-global-handler'
+        },
         initialize: function() {
             this._super();
 
@@ -24,9 +26,13 @@ define([
         updateBookmark: function () {
             console.log('UpdateBookmark was clicked.');
             let star = $('#bookmark-star');
-            star.addClass('selected');
+            star.removeClass('star');
+            star.addClass('star-red');
             //console.log('star: ', star);
             console.log(star[0].classList);
+        },
+        deleteItem: function (id) {
+            console.log('id: ' + id);
         }
 
     });

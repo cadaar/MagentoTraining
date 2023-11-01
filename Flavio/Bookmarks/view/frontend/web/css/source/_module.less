@@ -8,8 +8,35 @@
             @_icon-font-size: 18px,
             @_icon-font-line-height: 18px,
             @_icon-font-text-hide: true,
-            @_icon-font-color: @color-gray34,
-            @_icon-font-color-hover: @color-gray34
+            @_icon-font-color: @color-white-dark-smoke
+        );
+
+        &.star {
+            .lib-icon-font-symbol(
+                @_icon-font-content: @icon-star
+            );
+        }
+        &.star-red {
+            .lib-icon-font-symbol(
+                @_icon-font-content: @icon-star
+            );
+            .lib-icon-font(
+                @icon-star,
+                @_icon-font-size: 18px,
+                @_icon-font-line-height: 18px,
+                @_icon-font-text-hide: true,
+                @_icon-font-color: @color-red12
+            );
+        }
+    }
+    .bookmark-grid-icons {
+        .lib-icon-font(
+            @icon-star,
+            @_icon-font-size: 18px,
+            @_icon-font-line-height: 18px,
+            @_icon-font-text-hide: true,
+            @_icon-font-color: @color-gray46,
+            @_icon-font-color-hover: @color-gray46
         );
 
         &.delete {
@@ -18,16 +45,5 @@
             );
         }
 
-        &.star {
-            &.selected {
-                color:@color-red12;
-            }
-            .not-selected {
-                color:@color-gray34;
-            }
-            .lib-icon-font-symbol(
-                @_icon-font-content: @icon-star
-            );
-        }
     }
 }
