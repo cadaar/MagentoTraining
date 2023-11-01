@@ -51,30 +51,27 @@
         <column name="id">
             <settings>
                 <label translate="true">ID</label>
-                <sorting>desc</sorting>
-            </settings>
-        </column>
-        <column name="customer_id">
-            <settings>
-                <label translate="true">Customer ID</label>
-                <filter>textRange</filter>
+                <sortable>false</sortable>
             </settings>
         </column>
         <column name="customer_name">
             <settings>
                 <label translate="true">Customer Name</label>
+                <sortable>false</sortable>
                 <filter>text</filter>
             </settings>
         </column>
         <column name="url">
             <settings>
                 <label translate="true">URL</label>
+                <sortable>false</sortable>
                 <filter>text</filter>
             </settings>
         </column>
         <column name="page_title">
             <settings>
                 <label translate="true">Page Title</label>
+                <sortable>false</sortable>
                 <filter>text</filter>
             </settings>
         </column>

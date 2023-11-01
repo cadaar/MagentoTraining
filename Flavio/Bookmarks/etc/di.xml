@@ -3,6 +3,8 @@
     <virtualType name="Flavio\Bookmarks\Model\ResourceModel\Bookmark\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">flavio_bookmarks_bookmark</argument>
+            <argument name="eventPrefix" xsi:type="string">flavio_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">flavio_collection</argument>
             <argument name="resourceModel" xsi:type="string">Flavio\Bookmarks\Model\ResourceModel\Bookmark</argument>
         </arguments>
     </virtualType>

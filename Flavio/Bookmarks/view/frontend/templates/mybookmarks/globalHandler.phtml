@@ -1,0 +1,17 @@
+<?php
+/* @var $block Magento\Framework\View\Element\Template */
+?>
+
+<div id="bookmark-global-handler" data-bind="scope: 'bookmark-global-handler'">
+    <div id="bookmark-global-handler">
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "#bookmark-global-handler": {
+            "Magento_Ui/js/core/app": <?= $block->getJsLayout() ?>
+    }
+}
+</script>
