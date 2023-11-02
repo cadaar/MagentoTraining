@@ -34,7 +34,7 @@ define([
                 .delete(
                     this.getUrl(id),
                 )
-                .done(response => {
+                .done(function() {
                     this.bookmarks.remove(function(item) {
                         return item.id === id;
                     });

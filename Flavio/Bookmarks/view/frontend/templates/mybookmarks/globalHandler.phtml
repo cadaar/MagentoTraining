@@ -25,7 +25,7 @@ $currentUserId = $customerSession->getCustomer()->getData('entity_id');
                             "template": "Flavio_Bookmarks/bookmark-global-handler",
                             "currentPageTitle": <?= json_encode($currentPageTitle); ?>,
                             "currentPageUrl": <?= json_encode($currentPageUrl); ?>,
-                            "currentUserId": <?= json_encode($currentUserId); ?>
+                            "currentCustomerId": <?= json_encode($currentUserId); ?>
                         }
                     }
                 }
