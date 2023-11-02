@@ -5,6 +5,11 @@
 $vm = $block->getData('bookmark_vm');
 $configValue = $block->getConfigValue('bookmarks_for_customers/general/enable');
 $bookmarkList = $vm->getList();
+$bookmarks = array();
+foreach ($bookmarkList as $item) {
+   $bookmarks[] = $item->getData();
+}
+
 $isConfigParameterOn = $vm->isCustomerBookmarksOn();
 ?>
 
@@ -13,9 +18,18 @@ $isConfigParameterOn = $vm->isCustomerBookmarksOn();
 </div>
 
 <script type="text/x-magento-init">
-    {
-        "#bookmark-grid": {
-            "Magento_Ui/js/core/app": <?= $block->getJsLayout() ?>
+{
+    "#bookmark-grid": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "bookmark-grid": {
+                        "component": "Flavio_Bookmarks/js/bookmark-grid",
+                        "config": {
+                            "bookmarkListVm": <?= json_encode($bookmarks); ?>
+                        }
+                    }
+               }
+          }
     }
 }
 </script>
