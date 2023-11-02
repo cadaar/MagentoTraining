@@ -29,6 +29,17 @@ class BookmarkRepository implements BookmarksRepositoryInterface
 
         return $bookmark;
     }
+    public function getByUrl(string $url): BookmarkInterface
+    {
+        $bookmark = $this->factory->create();
+        $this->resourceModel->load($bookmark, $url, 'url');
+
+        if (!$bookmark->getId()) {
+            throw new NoSuchEntityException(__('Bookmark URL "%1" doesn\'t exist.', $url));
+        }
+
+        return $bookmark;
+    }
 
     public function save(BookmarkInterface $bookmark): BookmarkInterface
     {

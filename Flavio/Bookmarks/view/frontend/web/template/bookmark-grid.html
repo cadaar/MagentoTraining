@@ -3,14 +3,13 @@
         <span data-bind="i18n: 'You have no bookmarks yet.'"></span>
     </div>
 <!-- /ko -->
-
 <!-- ko ifnot: isBookmarkListEmpty() -->
 <div id="grid">
     <table>
-        <tbody data-bind="foreach: bookmarks">
+        <tbody data-bind="foreach: bookmarks()">
         <tr>
-            <td data-bind="text: title"></td>
-            <td><a data-bind="attr: { href: url }"><span data-bind="text: url"></span></a></td>
+            <td data-bind="text: $data.page_title"></td>
+            <td><a data-bind="attr: { href: $data.url }"><span data-bind="text: $data.url"></span></a></td>
             <td>
                 <div class="bookmark-grid-icons delete" data-bind="click: function() { $parent.deleteItem($data) }">
                     <span>delete</span>

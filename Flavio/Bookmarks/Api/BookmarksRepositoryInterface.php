@@ -21,6 +21,13 @@ interface BookmarksRepositoryInterface
     public function getById(int $id): BookmarkInterface;
 
     /**
+     * @param string $url
+     * @return BookmarkInterface
+     * @throws LocalizedException
+     */
+    public function getByUrl(string $url): BookmarkInterface;
+
+    /**
      * @param BookmarkInterface $bookmark
      * @return BookmarkInterface
      * @throws LocalizedException

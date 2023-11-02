@@ -6,6 +6,12 @@
             <resource ref="anonymous"/>
         </resources>
     </route>
+    <route method="GET" url="/V1/bookmarks_bookmark/url/:url" >
+        <service class="Flavio\Bookmarks\Api\BookmarksRepositoryInterface" method="getByUrl"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
     <route method="POST" url="/V1/bookmarks_bookmark">
         <service class="Flavio\Bookmarks\Api\BookmarksRepositoryInterface" method="save"/>
         <resources>
