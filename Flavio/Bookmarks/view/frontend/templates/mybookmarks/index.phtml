@@ -8,22 +8,14 @@ $bookmarkList = $vm->getList();
 $isConfigParameterOn = $vm->isCustomerBookmarksOn();
 ?>
 
-<!--<span>bookmarks_for_customers/general/enable --><?php //= $vm->isCustomerBookmarksOn(); ?><!--</span>-->
+<div id="bookmark-grid" data-bind="scope: 'bookmark-grid'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
 
-<?php if (empty($bookmarkList)): ?>
-    <div class="message info empty">
-        <span><?= $escaper->escapeHtml(__('You have no bookmarks yet.')) ?></span>
-    </div>
-<?php else: ?>
-    <table>
-        <tbody>
-        <?php foreach ($bookmarkList as $bookmark): ?>
-            <tr>
-                <td><?= $bookmark->getData('page_title') ?></td>
-                <td><a href="<?= $bookmark->getData('url') ?>"><?= $bookmark->getData('url') ?></a></td>
-                <td><div class="bookmark-icons delete"><span>delete</span></div></td>
-            </tr>
-        <?php endforeach ?>
-        </tbody>
-    </table>
-<?php endif; ?>
+<script type="text/x-magento-init">
+    {
+        "#bookmark-grid": {
+            "Magento_Ui/js/core/app": <?= $block->getJsLayout() ?>
+    }
+}
+</script>

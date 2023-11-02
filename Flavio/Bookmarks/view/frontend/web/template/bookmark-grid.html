@@ -1,0 +1,23 @@
+<!-- ko if: isBookmarkListEmpty() -->
+    <div class="message info empty">
+        <span data-bind="i18n: 'You have no bookmarks yet.'"></span>
+    </div>
+<!-- /ko -->
+
+<!-- ko ifnot: isBookmarkListEmpty() -->
+<div id="grid">
+    <table>
+        <tbody data-bind="foreach: bookmarks">
+        <tr>
+            <td data-bind="text: title"></td>
+            <td><a data-bind="attr: { href: url }"><span data-bind="text: url"></span></a></td>
+            <td>
+                <div class="bookmark-grid-icons delete" data-bind="click: function() { $parent.deleteItem($data) }">
+                    <span>delete</span>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!-- /ko -->
