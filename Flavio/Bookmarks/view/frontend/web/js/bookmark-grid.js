@@ -4,14 +4,12 @@ define([
     'mage/storage',
     'mage/url',
     'underscore',
-    'jquery'
 ], function(
     Component,
     ko,
     storage,
     url,
     _,
-    $
 ) {
     'use strict';
 

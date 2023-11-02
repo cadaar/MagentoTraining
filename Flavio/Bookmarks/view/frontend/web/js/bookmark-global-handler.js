@@ -1,13 +1,11 @@
 define([
     'uiComponent',
     'ko',
-    'Magento_Customer/js/customer-data',
     'underscore',
     'jquery'
 ], function(
     Component,
     ko,
-    customerData,
     _,
     $
 ) {
@@ -15,24 +13,32 @@ define([
 
     return Component.extend({
         defaults: {
-            template: 'Flavio_Bookmarks/bookmark-global-handler'
+            template: 'Flavio_Bookmarks/bookmark-global-handler',
+            currentPageTitle: '',
+            currentPageUrl: '',
+            currentUserId: ''
         },
-        initialize: function() {
+        initialize: function(config) {
             this._super();
 
+            this.currentPageTitle = config.currentPageTitle;
+            this.currentPageUrl = config.currentPageUrl;
             console.log(this.name + ' is initialized.');
-
         },
         updateBookmark: function () {
-            console.log('UpdateBookmark was clicked.');
-            let star = $('#bookmark-star');
-            star.removeClass('star');
-            star.addClass('star-red');
-            //console.log('star: ', star);
-            console.log(star[0].classList);
+            this.toggleStar();
         },
-        deleteItem: function (id) {
-            console.log('id: ' + id);
+        toggleStar: function () {
+            let star = $('#bookmark-star');
+
+            if (star[0].classList.contains('star-red')) {
+                // is active
+                star.removeClass('star-red');
+                star.addClass('star');
+            } else {
+                star.removeClass('star');
+                star.addClass('star-red');
+            }
         }
 
     });
