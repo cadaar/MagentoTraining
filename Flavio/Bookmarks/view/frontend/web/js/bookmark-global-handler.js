@@ -44,8 +44,8 @@ define([
             storage
                 .get(this.getUrlGetByUrl())
                 .done(response => {
-                    if (response.id) {
-                        this.currentBookmarkId = response.id;
+                    if (response) {
+                        this.currentBookmarkId = response;
                         this.toggleStar();
                     }
                 })

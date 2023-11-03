@@ -6,6 +6,7 @@ use Flavio\Bookmarks\Api\Data\BookmarkInterface;
 use Flavio\Bookmarks\Model\ResourceModel\Bookmark as BookmarkResourceModel;
 use Flavio\Bookmarks\Api\BookmarksRepositoryInterface;
 use Flavio\Bookmarks\Model\ResourceModel\Bookmark\CollectionFactory;
+use Magento\Customer\Helper\Session\CurrentCustomer;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -16,6 +17,7 @@ class BookmarkRepository implements BookmarksRepositoryInterface
         private BookmarkFactory $factory,
         private BookmarkResourceModel $resourceModel,
         private readonly CollectionFactory $collectionFactory,
+        private readonly CurrentCustomer $currentCustomer,
     ) {}
 
     public function getById(int $id): BookmarkInterface
@@ -29,16 +31,22 @@ class BookmarkRepository implements BookmarksRepositoryInterface
 
         return $bookmark;
     }
-    public function getByUrl(string $url): BookmarkInterface
-    {
-        $bookmark = $this->factory->create();
-        $this->resourceModel->load($bookmark, $url, 'url');
 
-        if (!$bookmark->getId()) {
-            throw new NoSuchEntityException(__('Bookmark URL "%1" doesn\'t exist.', $url));
+    public function getByUrl(string $url): int //BookmarkInterface
+    {
+        $currentCustomerId = (int)$this->currentCustomer->getCustomerId();
+        $customerBookmarks = $this->getCollectionByCustomerId($currentCustomerId);
+
+        $bookmarkIdFound = 0;
+        foreach ($customerBookmarks as $bookmark) {
+            $item = $bookmark->getData();
+            if ($item['url'] == $url) {
+                $bookmarkIdFound = $bookmark->getId();
+                break;
+            }
         }
 
-        return $bookmark;
+        return (int)$bookmarkIdFound;
     }
 
     public function save(BookmarkInterface $bookmark): BookmarkInterface

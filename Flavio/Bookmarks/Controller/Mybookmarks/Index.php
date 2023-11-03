@@ -7,8 +7,6 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\View\Result\PageFactory;
 
-//use Magento\Backend\Model\View\Result\Redirect;
-
 class Index implements HttpGetActionInterface
 {
     public function __construct(

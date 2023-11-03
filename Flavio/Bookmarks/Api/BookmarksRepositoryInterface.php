@@ -22,10 +22,10 @@ interface BookmarksRepositoryInterface
 
     /**
      * @param string $url
-     * @return BookmarkInterface
+     * @return int
      * @throws LocalizedException
      */
-    public function getByUrl(string $url): BookmarkInterface;
+    public function getByUrl(string $url): int;
 
     /**
      * @param BookmarkInterface $bookmark
