@@ -11,7 +11,7 @@
             <td data-bind="text: $data.page_title"></td>
             <td><a data-bind="attr: { href: $data.url }"><span data-bind="text: $data.url"></span></a></td>
             <td>
-                <div class="bookmark-grid-icons delete" data-bind="click: function() { $parent.deleteItem($data) }">
+                <div class="bookmark-pointer bookmark-grid-icons delete" data-bind="click: function() { $parent.deleteItem($data) }">
                     <span>delete</span>
                 </div>
             </td>

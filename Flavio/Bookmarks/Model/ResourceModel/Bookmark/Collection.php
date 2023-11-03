@@ -52,7 +52,6 @@ class Collection extends AbstractCollection
             [
                 'main_table.id',
                 'main_table.customer_id',
-                //'customer_name' => "CONCAT(secondTable.firstname, ' ', secondTable.lastname) as FullName",
                 "CONCAT(secondTable.firstname, ' ', secondTable.lastname) as customer_name",
                 'main_table.page_title',
                 'main_table.url'

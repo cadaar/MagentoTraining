@@ -36,7 +36,7 @@ class BookmarkRepository implements BookmarksRepositoryInterface
     {
         $bookmarkIdFound = 0;
 
-        $currentCustomerId = (int)$this->currentCustomer->getCustomerId();
+        $currentCustomerId = $this->getCurrentCustomerId();
 
         $customerBookmarks =  $this->getCollectionByCustomerIdAndUrl($currentCustomerId, $url);
 
@@ -44,12 +44,14 @@ class BookmarkRepository implements BookmarksRepositoryInterface
             $bookmarkIdFound = (int)reset($customerBookmarks)->getData()['id'];
         }
 
-        return (int)$bookmarkIdFound;
+        return $bookmarkIdFound;
     }
 
     public function save(BookmarkInterface $bookmark): BookmarkInterface
     {
         try {
+            $customerId = $this->getCurrentCustomerId();
+            $bookmark->setCustomerId($customerId);
             $this->resourceModel->save($bookmark);
         } catch (\Exception $exception) {
             throw new CouldNotSaveException(__($exception->getMessage()));
@@ -81,5 +83,10 @@ class BookmarkRepository implements BookmarksRepositoryInterface
     {
         $collection = $this->collectionFactory->create();
         return $collection->setCustomerIdFilter($customerId)->setUrlToFilter($url)->getItems();
+    }
+
+    private function getCurrentCustomerId(): int
+    {
+        return (int)$this->currentCustomer->getCustomerId();
     }
 }

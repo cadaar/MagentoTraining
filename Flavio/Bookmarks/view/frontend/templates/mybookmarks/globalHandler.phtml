@@ -1,13 +1,5 @@
 <?php
 /* @var $block Magento\Framework\View\Element\Template */
-$urlInterface = \Magento\Framework\App\ObjectManager::getInstance()
-    ->get(\Magento\Framework\UrlInterface::class);
-$currentPageUrl = $urlInterface->getCurrentUrl();
-$currentPageTitle = $block->getLayout()->getBlock('page.main.title')->getPageTitle();
-
-$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-$customerSession = $objectManager->get(\Magento\Customer\Model\Session::class);
-$currentUserId = $customerSession->getCustomer()->getData('entity_id');
 ?>
 
 <div id="bookmark-global-handler" data-bind="scope: 'bookmark-global-handler'">
@@ -15,21 +7,10 @@ $currentUserId = $customerSession->getCustomer()->getData('entity_id');
 </div>
 
 <script type="text/x-magento-init">
-{
-    "#bookmark-global-handler": {
-            "Magento_Ui/js/core/app": {
-                "components": {
-                    "bookmark-global-handler": {
-                        "component": "Flavio_Bookmarks/js/bookmark-global-handler",
-                        "config": {
-                            "template": "Flavio_Bookmarks/bookmark-global-handler",
-                            "currentPageTitle": <?= json_encode($currentPageTitle); ?>,
-                            "currentPageUrl": <?= json_encode($currentPageUrl); ?>,
-                            "currentCustomerId": <?= json_encode($currentUserId); ?>
-                        }
-                    }
-                }
-            }
+    {
+        "#bookmark-global-handler": {
+            "Magento_Ui/js/core/app": <?= $block->getJsLayout() ?>
     }
 }
 </script>
+

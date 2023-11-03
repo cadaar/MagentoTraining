@@ -18,17 +18,13 @@ define([
     return Component.extend({
         defaults: {
             template: 'Flavio_Bookmarks/bookmark-global-handler',
-            currentPageTitle: '',
             currentPageUrl: '',
-            currentCustomerId: '',
             currentBookmarkId: 0,
         },
-        initialize: function(config) {
+        initialize: function() {
             this._super();
 
-            this.currentPageTitle = config.currentPageTitle;
-            this.currentPageUrl = config.currentPageUrl;
-            this.currentCustomerId = config.currentCustomerId;
+            this.currentPageUrl = window.location.href;
             this.initializeStar();
 
             console.log(this.name + ' is initialized.');
@@ -42,7 +38,7 @@ define([
         },
         initializeStar: function () {
             storage
-                .get(this.getUrlGetByUrl())
+                .get(`${this.getApiUrl()}url/${encodeURIComponent(this.currentPageUrl)}`)
                 .done(response => {
                     if (response) {
                         this.currentBookmarkId = response;
@@ -53,20 +49,14 @@ define([
                     console.log('Error: ', err);
                 });
         },
-        getUrlGetByUrl: function () {
-            let url = BASE_URL + 'rest/V1/bookmarks_bookmark/url/' + encodeURIComponent(this.currentPageUrl);
-            return url;
-        },
         addBookmark: function () {
             let bookmark = {
-                page_title: this.currentPageTitle,
+                page_title: document.title,
                 url: this.currentPageUrl,
-                customer_id: this.currentCustomerId
             };
-            let data = JSON.stringify(bookmark);
             storage
                 .post(
-                    this.getApiPostUrl(),
+                    this.getApiUrl(),
                     JSON.stringify({'bookmark': bookmark}), true, 'application/json'
                 )
                 .done(response => {
@@ -79,13 +69,10 @@ define([
                     console.log('Error: ', err);
                 });
         },
-        getApiPostUrl: function () {
-            return BASE_URL + 'rest/V1/bookmarks_bookmark/';
-        },
         deleteBookmark: function () {
             storage
                 .delete(
-                    this.getApiDeleteUrl()
+                    `${this.getApiUrl()}${encodeURIComponent(this.currentBookmarkId)}`
                 )
                 .done(response => {
                     if (response) {
@@ -97,8 +84,8 @@ define([
                     console.log('Error: ', err);
                 });
         },
-        getApiDeleteUrl: function () {
-            return BASE_URL + 'rest/V1/bookmarks_bookmark/' + this.currentBookmarkId;
+        getApiUrl: function () {
+            return `${BASE_URL}rest/V1/bookmarks_bookmark/`;
         },
         toggleStar: function () {
             let star = $('#bookmark-star');
