@@ -37,6 +37,12 @@ class Collection extends AbstractCollection
         return $this;
     }
 
+    public function setUrlToFilter($url): self
+    {
+        $this->addFieldToFilter(BookmarkInterface::URL, $url);
+        return $this;
+    }
+
     protected function _initSelect()
     {
         parent::_initSelect();

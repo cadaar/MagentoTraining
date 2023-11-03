@@ -32,18 +32,16 @@ class BookmarkRepository implements BookmarksRepositoryInterface
         return $bookmark;
     }
 
-    public function getByUrl(string $url): int //BookmarkInterface
+    public function getByUrl(string $url): int
     {
-        $currentCustomerId = (int)$this->currentCustomer->getCustomerId();
-        $customerBookmarks = $this->getCollectionByCustomerId($currentCustomerId);
-
         $bookmarkIdFound = 0;
-        foreach ($customerBookmarks as $bookmark) {
-            $item = $bookmark->getData();
-            if ($item['url'] == $url) {
-                $bookmarkIdFound = $bookmark->getId();
-                break;
-            }
+
+        $currentCustomerId = (int)$this->currentCustomer->getCustomerId();
+
+        $customerBookmarks =  $this->getCollectionByCustomerIdAndUrl($currentCustomerId, $url);
+
+        if (!empty($customerBookmarks)) {
+            $bookmarkIdFound = (int)reset($customerBookmarks)->getData()['id'];
         }
 
         return (int)$bookmarkIdFound;
@@ -77,5 +75,11 @@ class BookmarkRepository implements BookmarksRepositoryInterface
     {
         $collection = $this->collectionFactory->create();
         return $collection->setCustomerIdFilter($customerId)->getItems();
+    }
+
+    public function getCollectionByCustomerIdAndUrl(int $customerId, string $url): array
+    {
+        $collection = $this->collectionFactory->create();
+        return $collection->setCustomerIdFilter($customerId)->setUrlToFilter($url)->getItems();
     }
 }
