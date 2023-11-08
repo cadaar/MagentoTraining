@@ -47,4 +47,9 @@ interface BookmarksRepositoryInterface
      * @return array
      */
     public function getCollectionByCustomerId(int $customerId): array;
+
+    /**
+     * @return array
+     */
+    public function getCurrentCustomerBookmarks(): array;
 }

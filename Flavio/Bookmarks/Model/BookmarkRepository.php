@@ -85,6 +85,12 @@ class BookmarkRepository implements BookmarksRepositoryInterface
         return $collection->setCustomerIdFilter($customerId)->setUrlToFilter($url)->getItems();
     }
 
+    public function getCurrentCustomerBookmarks(): array
+    {
+        $collection = $this->collectionFactory->create();
+        return $collection->setCustomerIdFilter($this->getCurrentCustomerId())->getItems();
+    }
+
     private function getCurrentCustomerId(): int
     {
         return (int)$this->currentCustomer->getCustomerId();
