@@ -1,11 +1,15 @@
 <?php
-/* @var $block Magento\Framework\View\Element\Template */
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var Magento\Framework\Escaper $escaper */
+/** @var Flavio\CatFact\ViewModel\CatFact $vm */
+$vm = $block->getData('cat_fact_vm');
+$catFactData = $vm->getCatFact();
 
 $jsLayout = json_decode($block->getJsLayout(), true);
 ?>
 
 <div id="cat-fact-banner" data-bind="scope: 'cat-fact-banner'">
-    <!-- ko template: getTemplate() --><!-- /ko -->
+    <strong>Cat Fact😺</strong><span><?= $catFactData ?></span>
 </div>
 
 <script type="text/x-magento-init">

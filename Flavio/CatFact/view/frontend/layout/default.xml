@@ -4,6 +4,7 @@
         <referenceContainer name="header.container">
             <block name="cat.fact.banner" template="Flavio_CatFact::cat-fact-banner.phtml" before="-" >
                 <arguments>
+                    <argument name="cat_fact_vm" xsi:type="object">Flavio\CatFact\ViewModel\CatFact</argument>
                     <argument name="jsLayout" xsi:type="array">
                         <item name="components" xsi:type="array">
                             <item name="cat-fact-banner" xsi:type="array">
