@@ -1,0 +1,32 @@
+<li id="custom-message" class="checkout-custom-message" data-bind="fadeVisible: isVisible">
+    <div class="step-title" data-role="title" data-bind="i18n: 'Custom Message'">Custom Message</div>
+    <div id="checkout-step-custom-message"
+         class="step-content"
+         data-role="content"
+         role="tabpanel"
+         aria-hidden="false">
+        <form data-bind="submit: navigateToNextStep" novalidate="novalidate" data-role="custom-message-data-role">
+            <fieldset class="fieldset">
+                <div class="field required">
+                    <label class="label" for="custom-message-input"><span data-bind="i18n: 'Custom Message'"></span></label>
+                    <div class="control _with-tooltip">
+                        <input class="input-text"
+                               type="text"
+                               data-bind="
+                                   textInput: customMessage,
+                                   attr: {
+                                   placeholder: $t('Custom Message')}"
+                               name="customMessage"
+                               data-validate="{required:true}"
+                               id="custom-message-input" />
+                    </div>
+                </div>
+            </fieldset>
+            <div class="primary">
+                <button data-role="opc-continue" type="submit" class="button action continue primary">
+                    <span translate="'Next'"></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</li>
