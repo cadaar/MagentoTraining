@@ -1,5 +1,12 @@
 <div class="bookmark-global-handler">
-    <div id="bookmark-star"
+    <!--ko if: (isBookmarked())-->
+    <div id="bookmark-star-enabled"
+         class="bookmark-pointer bookmark-icons star-red"
+         data-bind="click: updateBookmark"><span>Hel</span></div>
+    <!-- /ko -->
+    <!--ko ifnot: (isBookmarked())-->
+    <div id="bookmark-star-disabled"
          class="bookmark-pointer bookmark-icons star"
          data-bind="click: updateBookmark"><span>Hel</span></div>
+    <!-- /ko -->
 </div>

@@ -22,6 +22,6 @@ class BookmarksSection implements SectionSourceInterface
             $data[] = $bookmark->getData();
         }
 
-        return $data;
+        return ['items' => $data];
     }
 }

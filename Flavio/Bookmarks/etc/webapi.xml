@@ -12,7 +12,7 @@
             <resource ref="self"/>
         </resources>
     </route>
-    <route method="POST" url="/V1/bookmarks_bookmark">
+    <route method="POST" url="/V1/bookmarks_bookmark/post">
         <service class="Flavio\Bookmarks\Api\BookmarksRepositoryInterface" method="save"/>
         <resources>
             <resource ref="self"/>
@@ -24,7 +24,7 @@
             <resource ref="self"/>
         </resources>
     </route>
-    <route method="DELETE" url="/V1/bookmarks_bookmark/:id">
+    <route method="DELETE" url="/V1/bookmarks_bookmark/delete/:id">
         <service class="Flavio\Bookmarks\Api\BookmarksRepositoryInterface" method="deleteById"/>
         <resources>
             <resource ref="self"/>

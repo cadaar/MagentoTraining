@@ -19,7 +19,8 @@
             </storageConfig>
         </settings>
         <aclResource>Flavio_Bookmarks::all_bookmarks</aclResource>
-        <dataProvider name="flavio_bookmarks_bookmark_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <dataProvider name="flavio_bookmarks_bookmark_listing_data_source"
+                      class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>id</primaryFieldName>
