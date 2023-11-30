@@ -49,7 +49,46 @@ define([
             $(formSelector).validation();
             let messageValidation = Boolean($(formSelector + ' input[name=customMessage]').valid());
             if (messageValidation) {
+                //this.saveCustomMessage();
                 stepNavigator.next();
+            }
+        },
+        saveCustomMessage: function () {
+            let quoteId = quote.getQuoteId();
+
+            let url = urlFormatter.build('order_message/quote/save');
+
+            let customMessage = $('[name="custom_message"]').val();
+
+            if (customMessage) {
+
+                var payload = {
+                    'cartId': quoteId,
+                    'customMessage': customMessage,
+                    'is_customer': isCustomer
+                };
+
+                if (!payload.customMessage) {
+                    return true;
+                }
+
+                var result = true;
+
+                $.ajax({
+                    url: url,
+                    data: payload,
+                    dataType: 'text',
+                    type: 'POST',
+                }).done(
+                    function (response) {
+                        result = true;
+                    }
+                ).fail(
+                    function (response) {
+                        result = false;
+                        errorProcessor.process(response);
+                    }
+                );
             }
         }
     });

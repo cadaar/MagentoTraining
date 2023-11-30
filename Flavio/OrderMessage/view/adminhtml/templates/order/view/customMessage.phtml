@@ -1,0 +1,17 @@
+<?php
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var Magento\Framework\Escaper $escaper */
+// /** @var Flavio\Bookmarks\ViewModel\Bookmark $vm */
+//$vm = $block->getData('bookmark_vm');
+$message = $block->getOrderCustomMessage();
+//$bookmarkList = $vm->getList();
+//$bookmarks = array();
+//foreach ($bookmarkList as $item) {
+//    $bookmarks[] = $item->getData();
+//}
+//
+//$isConfigParameterOn = $vm->isCustomerBookmarksOn();
+?>
+
+<h3>NCC-1701</h3>
+<pre><?= __($message) ?></pre>

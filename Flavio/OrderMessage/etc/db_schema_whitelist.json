@@ -1,0 +1,17 @@
+{
+    "quote": {
+        "column": {
+            "custom_message": true
+        }
+    },
+    "sales_order": {
+        "column": {
+            "custom_message": true
+        }
+    },
+    "sales_order_grid": {
+        "column": {
+            "custom_message": true
+        }
+    }
+}
