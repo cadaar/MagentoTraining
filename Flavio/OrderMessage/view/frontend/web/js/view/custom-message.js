@@ -6,6 +6,7 @@ define([
     'underscore',
     'Magento_Checkout/js/model/quote',
     'Magento_Customer/js/model/customer',
+    'mage/url',
     'jquery'
 ], function(
     Component,
@@ -15,6 +16,7 @@ define([
     _,
     quote,
     customer,
+    urlFormatter,
     $
 ) {
     'use strict';
@@ -49,16 +51,14 @@ define([
             $(formSelector).validation();
             let messageValidation = Boolean($(formSelector + ' input[name=customMessage]').valid());
             if (messageValidation) {
-                //this.saveCustomMessage();
-                stepNavigator.next();
+                this.saveCustomMessage();
             }
         },
         saveCustomMessage: function () {
             let quoteId = quote.getQuoteId();
-
             let url = urlFormatter.build('order_message/quote/save');
-
-            let customMessage = $('[name="custom_message"]').val();
+            let customMessage = $('[name="customMessage"]').val();
+            let isCustomer = customer.isLoggedIn();
 
             if (customMessage) {
 
@@ -72,7 +72,7 @@ define([
                     return true;
                 }
 
-                var result = true;
+                let result = true;
 
                 $.ajax({
                     url: url,
@@ -81,6 +81,7 @@ define([
                     type: 'POST',
                 }).done(
                     function (response) {
+                        stepNavigator.next();
                         result = true;
                     }
                 ).fail(

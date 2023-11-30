@@ -5,7 +5,6 @@ namespace Flavio\OrderMessage\Block\Adminhtml\Order\View;
 use Magento\Framework\View\Element\Template;
 use Magento\Backend\Block\Template\Context;
 use Magento\Framework\Registry;
-use Magento\Sales\Model\Order;
 
 class CustomMessage extends Template
 {
@@ -19,9 +18,7 @@ class CustomMessage extends Template
     }
     public function getOrderCustomMessage()
     {
-        /** @var Order $order */
         $order =  $this->coreRegistry->registry('current_order');
-        $custom_message = $order->getData('custom_message');
-        return $custom_message;
+        return $order->getData('custom_message');
     }
 }

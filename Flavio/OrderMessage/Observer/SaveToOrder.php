@@ -15,10 +15,6 @@ class SaveToOrder implements ObserverInterface
 
         $custom_message = $quote->getData('custom_message');
 
-        if ($custom_message == "") {
-            $custom_message = "no message from quote, this is hardcoded.";
-        }
-
         $order->setData('custom_message', $custom_message);
     }
 }
