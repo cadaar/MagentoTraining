@@ -79,17 +79,13 @@ define([
                     data: payload,
                     dataType: 'text',
                     type: 'POST',
-                }).done(
-                    function (response) {
-                        stepNavigator.next();
-                        result = true;
-                    }
-                ).fail(
-                    function (response) {
-                        result = false;
-                        errorProcessor.process(response);
-                    }
-                );
+                }).done(() => {
+                    stepNavigator.next();
+                    result = true;
+                }).fail((error) => {
+                    result = false;
+                    console.log(error);
+                });
             }
         }
     });
