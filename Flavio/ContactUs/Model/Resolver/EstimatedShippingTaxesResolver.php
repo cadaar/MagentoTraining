@@ -11,11 +11,7 @@ use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Framework\GraphQl\Query\Resolver\ArgumentsProcessorInterface;
-use Magento\Quote\Api\Data\ShippingMethodInterface;
 use Magento\Quote\Model\MaskedQuoteIdToQuoteId;
-use Magento\Quote\Api\ShippingMethodManagementInterface;
-
-use Magento\Quote\Model\Quote\Address\Total;
 use Magento\QuoteGraphQl\Model\Cart\TotalsCollector;
 
 class EstimatedShippingTaxesResolver implements ResolverInterface
@@ -27,7 +23,6 @@ class EstimatedShippingTaxesResolver implements ResolverInterface
         private readonly CartRepositoryInterface $quoteRepository,
         private readonly ArgumentsProcessorInterface $argsSelection,
         private readonly MaskedQuoteIdToQuoteId $maskedQuoteIdToQuoteId,
-        //private readonly ShippingMethodManagementInterface $shippingMethodManagement,
         private readonly TotalsCollector $totalsCollector,
     ) {}
 
@@ -59,15 +54,9 @@ class EstimatedShippingTaxesResolver implements ResolverInterface
         try {
             if($cartId){
                 $quote = $this->quoteRepository->get($cartId);
-                //$shippingMethods = $this->shippingMethodManagement->getList($cartId);
-
-                //$carrierCode = $this->getShippingMethodCarrierCode($quote);
-
-                //$isFlatRate = $this->isFlatRate($carrierCode);
 
                 $estimatedShippingTax = $this->getEstimatedShippingTax($quote);
 
-                // /** @var \Magento\Quote\Model\Quote\Address\Total $cartTotals */
                 $cartTotals = $this->totalsCollector->collectQuoteTotals($quote);
                 $estimatedShippingRate = $this->getEstimatedShippingRate($quote);
                 $grandTotal = $cartTotals->getGrandTotal() + $estimatedShippingTax;
