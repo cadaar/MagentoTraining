@@ -1,0 +1,26 @@
+type Mutation {
+    contactusFormSubmit(input: ContactusInput!): Contactus @resolver(class: "\\Flavio\\ContactUs\\Model\\Resolver\\Contactusgraphql") @doc(description:"Contact us form")
+}
+
+input ContactusInput {
+    fullname: String @doc(description: "The customer's name")
+    email: String @doc(description: "email address")
+    telephone: String @doc(description: "The Telephone")
+    message: String @doc(description: "message")
+}
+
+type Contactus {
+    success_message: String @doc(description: "Success Message")
+}
+
+type FlavioQuote {
+    estimated_shipping_rate: Money @doc(description: "The amount of the shipping.")
+    estimated_tax: Money @doc(description: "Estimated shipping taxes calculated for the exercise.")
+    subtotal_including_tax: Money @doc(description: "Subtotal with taxes.")
+    subtotal_excluding_tax: Money @doc(description: "Subtotal without taxes.")
+    grand_total: Money @doc(description: "The total with taxes, shipping and everything")
+}
+
+type Query {
+    shippingTaxes(cart_id: String! @doc(description: "Return information about shipping taxes.")): FlavioQuote @resolver(class: "Flavio\\ContactUs\\Model\\Resolver\\EstimatedShippingTaxesResolver")
+}
